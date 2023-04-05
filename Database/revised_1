@@ -1,0 +1,271 @@
+-- phpMyAdmin SQL Dump
+-- version 4.1.12
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: Feb 21, 2023 at 07:29 PM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.11
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `details`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `addpdrive`
+--
+
+CREATE TABLE IF NOT EXISTS `addpdrive` (
+  `CompanyName` varchar(255) NOT NULL,
+  `Date` date NOT NULL,
+  `C/P` tinyint(1) NOT NULL DEFAULT '0',
+  `PVenue` varchar(255) NOT NULL,
+  `SSLC` float NOT NULL,
+  `PU/Dip` float NOT NULL,
+  `BE` float NOT NULL,
+  `Backlogs` int(11) NOT NULL,
+  `HofBacklogs` tinyint(1) NOT NULL,
+  `DetainYears` int(11) NOT NULL,
+  `ODetails` text,
+  PRIMARY KEY (`CompanyName`,`Date`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `addpdrive`
+--
+
+INSERT INTO `addpdrive` (`CompanyName`, `Date`, `C/P`, `PVenue`, `SSLC`, `PU/Dip`, `BE`, `Backlogs`, `HofBacklogs`, `DetainYears`, `ODetails`) VALUES
+('Apple', '2015-07-23', 0, 'RVCE', 98, 98, 90, 0, 0, 0, 'Welcome to Apple'),
+('Haritha Tech', '2015-06-26', 1, 'SIT', 60, 65, 65, 0, 0, 0, '0'),
+('HP', '2013-08-19', 1, 'SSIT', 70, 75, 75, 0, 0, 0, '0'),
+('IBM', '2015-05-12', 0, 'CIT College', 60, 65, 65, 0, 0, 0, '0'),
+('Infosis', '2015-01-10', 0, 'CIT College', 60, 60, 60, 0, 0, 0, '0'),
+('Intel', '2013-09-08', 0, 'CIT', 60, 65, 65, 0, 0, 0, '0'),
+('Microsoft company', '2014-12-09', 0, 'CIT', 60, 65, 65, 0, 0, 0, '0'),
+('Skype', '2014-06-10', 1, 'SIT College', 75, 75, 75, 0, 0, 0, '0'),
+('Tata Consultency Services', '2015-11-24', 1, 'AIE', 65, 70, 75, 0, 0, 0, '0'),
+('VTECK', '2013-03-24', 0, 'CIT College', 60, 60, 65, 0, 0, 0, '0'),
+('WDS', '2014-09-30', 1, 'KIT', 65, 65, 65, 0, 0, 0, '0'),
+('yy', '2015-07-04', 0, '', 45, 55, 55, 8, 1, 2, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `basicdetails`
+--
+
+CREATE TABLE IF NOT EXISTS `basicdetails` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `FirstName` varchar(25) NOT NULL,
+  `LastName` varchar(25) NOT NULL,
+  `USN` varchar(10) NOT NULL,
+  `Mobile` bigint(11) NOT NULL,
+  `Email` varchar(255) NOT NULL,
+  `DOB` date NOT NULL,
+  `Sem` int(11) NOT NULL,
+  `Branch` varchar(15) NOT NULL,
+  `SSLC` float NOT NULL,
+  `PU/Dip` float NOT NULL,
+  `BE` float NOT NULL,
+  `Backlogs` int(11) NOT NULL,
+  `HofBacklogs` tinyint(1) NOT NULL,
+  `DetainYears` int(11) NOT NULL,
+  `Approve` tinyint(1) NOT NULL DEFAULT '0',
+  `ApprovalDate` date NOT NULL,
+  PRIMARY KEY (`Id`,`USN`),
+  UNIQUE KEY `USN` (`USN`,`Mobile`,`Email`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+
+--
+-- Dumping data for table `basicdetails`
+--
+
+INSERT INTO `basicdetails` (`Id`, `FirstName`, `LastName`, `USN`, `Mobile`, `Email`, `DOB`, `Sem`, `Branch`, `SSLC`, `PU/Dip`, `BE`, `Backlogs`, `HofBacklogs`, `DetainYears`, `Approve`, `ApprovalDate`) VALUES
+(1, 'Sumant', 'Rawat', '70411119001', 9846554756, 'sumantrawat@gmail.com', '2001-06-09', 1, 'IT', 70, 70, 70, 0, 0, 0, 1, '2022-12-25'),
+(2, 'Raj', 'Patil', '70411119002', 7738804129, 'rajpatil@gmail.com', '2000-03-08', 2, 'CS', 75, 75, 70, 0, 0, 0, 1, '2022-12-23'),
+(3, 'Naachiket', 'Pant', '70411119003', 9865623241, 'ragini@gmail.com', '2001-01-28', 6, 'EXTC', 55, 55, 55, 0, 0, 0, 1, '2022-11-20'),
+(4, 'Punith', 'raj kumar', '70411119004', 6758548694, 'punith@gmail.com', '2001-02-13', 8, 'CIVIL', 85, 85, 85, 0, 0, 0, 0, '2022-12-26'),
+(5, 'Manvith', 'kumar', '70411119005', 9874563211, 'mk@gmail.com', '2000-05-31', 7, 'CS', 99, 99, 99, 0, 0, 0, 0, '2022-12-22'),
+(6, 'Harsha', 'Asawa', '70411119006', 7894561230, 'harshasawa@gmail.com', '2001-01-04', 8, 'EXTC', 99, 99, 99, 0, 0, 0, 0, '2022-10-05'),
+(7, 'Tejaswini', 'Shah', '70411119007', 9867564158, 'tshah@gmil.com', '2000-08-13', 4, 'IT', 65, 65, 65, 0, 0, 0, 0, '2023-01-08'),
+(8, 'Ashraf', 'Unissa', '70411119008', 7738804158, 'ashrafu@gmail.com', '2001-10-23', 4, 'CIVIL', 55, 55, 55, 0, 0, 0, 0, '2023-02-10'),
+(9, 'Roja', 'Bai', '70411119009', 9867548569, 'rojabai@gmail.com', '2000-04-28', 4, 'IT', 66, 63, 62, 0, 0, 0, 1, '2023-02-23'),
+(10, 'Yogesh', 'Singh', '70411119010', 6996578952, 'yogesgsingh@gmail.com', '2000-06-13', 5, 'CS', 41, 45, 45, 0, 0, 0, 0, '2023-02-10'),
+(11, 'Rahul', 'Khanna', '70411119011', 2147483647, 'rahulkhanna@gmail.com', '2000-07-02', 4, 'MECH', 77, 66, 77, 0, 0, 0, 1, '2023-02-23'),
+(12, 'Vishruth', 'Harithsa', '70411119012', 9880796862, 'harithsa@gmail.com', '2000-10-22', 6, 'MECH', 91, 70, 50, 5, 0, 1, 1, '2022-08-18'),
+(13, 'Smit', 'Desai', '70411119013', 2147483647, 'Smitdesai@gmail.com', '2000-07-23', 7, 'IT', 100, 100, 100, 0, 0, 0, 1, '2022-07-23'),
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `updatedrive`
+--
+CREATE TABLE IF NOT EXISTS `updatedrive` (
+  `USN` varchar(10) NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  `CompanyName` varchar(255) NOT NULL,
+  `Date` date NOT NULL,
+  `Attendence` tinyint(1) NOT NULL DEFAULT '0',
+  `WT` tinyint(1) NOT NULL DEFAULT '0',
+  `GD` tinyint(1) NOT NULL DEFAULT '0',
+  `Techical` tinyint(1) NOT NULL DEFAULT '0',
+  `Placed` tinyint(1) NOT NULL DEFAULT '0',
+  KEY `USN` (`USN`),
+  KEY `CompanyName` (`CompanyName`,`Date`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `updatedrive`
+--
+
+INSERT INTO `updatedrive` (`USN`, `Name`, `CompanyName`, `Date`, `Attendence`, `WT`, `GD`, `Techical`, `Placed`) VALUES
+('70411119001', 'Sumant', 'Apple', '2022-06-26', 1, 1, 1, 1, 1),
+('70411119002', 'Raj', 'HP', '2022-08-19', 1, 1, 1, 1, 1),
+('70411119004', 'Punith', 'IBM', '2022-05-12', 1, 1, 1, 1, 1),
+('70411119005', 'Manvith', 'Infoysis', '2022-01-10', 1, 1, 1, 1, 1),
+('70411119006', 'Harsha', 'Intel', '2022-09-08', 1, 1, 1, 1, 1),
+('70411119008', 'Ashraf', 'Microsoft company', '2022-12-09', 1, 1, 1, 1, 1),
+('70411119009', 'Roja', 'Skype', '2022-06-10', 1, 1, 1, 1, 1),
+('70411119010', 'Yogesh', 'Tata Consultancy Services', '2022-11-24', 1, 1, 1, 1, 1),
+('70411119007', 'Tesjaswini', 'WDS', '2022-09-30', 1, 1, 1, 1, 1),
+('70411119004', 'Punith', 'Reliance', '2022-07-04', 1, 1, 1, 0, 0),
+('70411119014', 'Vishruth Harithsa', 'Apple', '2022-07-23', 1, 1, 1, 1, 1);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `updatedrive`
+--
+ALTER TABLE `updatedrive`
+  ADD CONSTRAINT `updatedrive_ibfk_1` FOREIGN KEY (`USN`) REFERENCES `basicdetails` (`USN`) ON DELETE CASCADE,
+  ADD CONSTRAINT `updatedrive_ibfk_2` FOREIGN KEY (`CompanyName`, `Date`) REFERENCES `addpdrive` (`CompanyName`, `Date`) ON DELETE CASCADE;
+--
+-- Database: `placement`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hlogin`
+--
+
+CREATE TABLE IF NOT EXISTS `hlogin` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(25) NOT NULL,
+  `Username` varchar(255) NOT NULL,
+  `Password` varchar(255) NOT NULL,
+  `Email` varchar(255) NOT NULL,
+  `Question` varchar(255) NOT NULL,
+  `Answer` varchar(255) NOT NULL,
+  `Branch` varchar(15) NOT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Username` (`Username`,`Email`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `hlogin`
+--
+
+INSERT INTO `hlogin` (`Id`, `Name`, `Username`, `Password`, `Email`, `Question`, `Answer`, `Branch`) VALUES
+(1, 'Nagaraj P', 'Nagaraj', '123456', 'fastnag@gmail.com', 'What is your fav spot?', 'Bangalore', 'ISE');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `plogin`
+--
+
+CREATE TABLE IF NOT EXISTS `plogin` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(25) NOT NULL,
+  `Username` varchar(255) NOT NULL,
+  `Password` varchar(255) NOT NULL,
+  `Email` varchar(255) NOT NULL,
+  `Question` varchar(255) NOT NULL,
+  `Answer` varchar(255) NOT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Username` (`Username`,`Email`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `plogin`
+--
+
+INSERT INTO `plogin` (`Id`, `Name`, `Username`, `Password`, `Email`, `Question`, `Answer`) VALUES
+(1, 'Rohini', 'rohini', 'rohini', 'rh@gmail.com', 'What is your fav spot?', 'mangalore');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `prilogin`
+--
+
+CREATE TABLE IF NOT EXISTS `prilogin` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(25) NOT NULL,
+  `Username` varchar(255) NOT NULL,
+  `Password` varchar(255) NOT NULL,
+  `Email` varchar(255) NOT NULL,
+  `Question` varchar(255) NOT NULL,
+  `Answer` varchar(255) NOT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Username` (`Username`,`Email`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `prilogin`
+--
+
+INSERT INTO `prilogin` (`Id`, `Name`, `Username`, `Password`, `Email`, `Question`, `Answer`) VALUES
+(1, 'Suresh', 'suresh', '123456', 'suresh@gmail.com', 'What is your fav spot?', 'madikeri');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `slogin`
+--
+
+CREATE TABLE IF NOT EXISTS `slogin` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(25) NOT NULL,
+  `USN` varchar(10) NOT NULL,
+  `PASSWORD` varchar(255) NOT NULL,
+  `Email` varchar(255) NOT NULL,
+  `Question` varchar(255) NOT NULL,
+  `Answer` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `USN` (`USN`,`Email`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+
+--
+-- Dumping data for table `slogin`
+--
+
+INSERT INTO `slogin` (`id`, `Name`, `USN`, `PASSWORD`, `Email`, `Question`, `Answer`) VALUES
+(1, 'Sumant', '70411119001', '123', 'veda', 'What is your fav spot?', ''),
+(2, 'Sumant', '70411119001', 'veda', 'v@gmil.com', 'what is your fav spot?', 'mysore'),
+(3, 'rama', '70411119002', 'rama', 'rama@gmail.com', 'What is your fav dish?', 'chicken'),
+(4, 'Vishruth Harithsa', '70411119014', 'CUTESTAR22', 'har', 'What is your nickname?', ''),
+(5, 'Armstrong', '70411119013', 'asdfg', 'armstrong@neil.com', 'What is your fav spot?', 'New York'),
+(8, 'Harry', '70411119020', 'asdfg', 'asdfg@gmail.com', 'What is your fav spot?', 'Manali'),
+(9, '', '', '', '', '', ''),
+(10, 'Harithsa', '704111190012', 'qwerty', 'harithsa@aol.com', 'What is your nickname?', 'Gunda'),
+(11, 'Vishruth Harithsa', '70411119012', 'qwerty', 'astroman225@gmail.com', 'What is your fav spot?', 'Manali');
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

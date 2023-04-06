@@ -1,7 +1,7 @@
 <?php
   session_start();
   if($_SESSION["username"]){
-    echo "Welcome, ".$_SESSION['username']."!";
+   
   }
    else {
 	   header("location: index.php");
@@ -53,6 +53,7 @@
             $FN = $data['FirstName'];
             $LN = $data['LastName'];
             echo "<h1>" . $FN . " " . $LN . "<br>". $_SESSION['username']. "</h1>";
+
 		      ?>
         </header>
         <div class="profile-photo-container">
@@ -116,11 +117,32 @@
               $RESULT=mysql_query("SELECT Approve from basicdetails where USN=" . $_SESSION["username"]);
               $data=mysql_fetch_assoc($RESULT);
               if($data["Approve"]==1){
-                echo "You have been Approved";
+                echo "<h3>Your profile has been approved</h3><br>";
               }
-              else {
-                echo "No new notifications";
-              }
+              
+              echo "<h2>Your notifications</h2>";
+              
+            $r1 = mysql_query("SELECT Branch from basicdetails where USN='" . $_SESSION["username"] . "'");
+            
+            $row1 = mysql_fetch_assoc($r1);
+            $branch = $row1["Branch"];
+
+            $RESULT=mysql_query("SELECT * from notifications where Dept ='" . $branch . "' or Dept='ALL'");
+
+            print "<table>";
+            print '<tr><th style="padding: 0 75px;">Sno.</th><th style="padding: 0 75px;">Subject</th><th style="padding: 0 75px;">Message</th> </tr>';
+            while($row = mysql_fetch_assoc($RESULT))
+            {
+              print '<tr>';
+                print '<td style="padding: 0 75px;">'.$row['Id'].'</td>';	
+                
+                print '<td style="padding: 0 75px;">'.$row['Subject'].'</td>';		
+                print '<td style="padding: 0 75px;">'.$row['Message'].'</td>';	
+               print '</tr>';
+           
+            }
+            print "</table>";
+
               ?>
             </centre>
           </div>

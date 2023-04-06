@@ -42,11 +42,14 @@
         <header class="templatemo-site-header">
           <div class="square"></div>
           <?php
-		  $Welcome = "Welcome";
-          echo "<h1>" . $Welcome . "<br>". $_SESSION['husername']. "</h1>";
-		  echo "<h1>(</h1>";
-		    echo "<h1>" . $_SESSION['department']. "</h1>";   
-            echo "<h1>)</h1>";
+        
+        mysql_connect('localhost','root','');
+        mysql_select_db('placement');
+        
+        $RESULT=mysql_query("SELECT * from hlogin where Username ='" . $_SESSION["husername"] . "'");
+        $data=mysql_fetch_assoc($RESULT);
+        $FN = $data['Name'];
+        echo "<h1>" . $FN . "<br></h1>";
 		  ?>
         </header>
         <div class="profile-photo-container">
@@ -96,13 +99,13 @@ NH4, Heruralt="Profile Photo" class="img-responsive">
               <div class="row form-group">
                 <div class="col-lg-12 form-group">                   
                     <label class="control-label" for="inputNote">Subject:</label>
-                    <textarea class="form-control" id="inputNote" rows="2"></textarea>
+                    <textarea name="Subject" class="form-control" id="inputNote" rows="2"></textarea>
                 </div>
               </div>
               <div class="row form-group">
                 <div class="col-lg-12 form-group">                   
                     <label class="control-label" for="inputNote">Message:</label>
-                    <textarea class="form-control" id="inputNote" rows="5"></textarea>
+                    <textarea name="Message" class="form-control" id="inputNote" rows="5"></textarea>
                 </div>
               </div>
 			      

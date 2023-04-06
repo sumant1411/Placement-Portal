@@ -12,9 +12,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!--favicon-->
-        <link rel="shortcut icon" href="favicon.ico" type="image/icon">
-        <link rel="icon" href="favicon.ico" type="image/icon">	
+    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -92,17 +90,17 @@
           <div class="templatemo-content-widget white-bg">
             <h2 class="margin-bottom-10">Write Messages</h2>
             <p>Department Notifications to Students</p>
-            <form action="upload.php" action="POST" enctype="multipart/form-data">
+            <form action="upload_notif.php" method="POST">
               <div class="row form-group">
                 <div class="col-lg-12 form-group">                   
                     <label class="control-label" for="inputNote">Subject:</label>
-                    <textarea class="form-control" id="inputNote" rows="2" name="Subject"></textarea>
+                    <textarea name="Subject" class="form-control" id="inputNote" rows="2" ></textarea>
                 </div>
               </div>
               <div class="row form-group">
                 <div class="col-lg-12 form-group">                   
                     <label class="control-label" for="inputNote">Message:</label>
-                    <textarea class="form-control" id="inputNote" rows="5" name="Message"></textarea>
+                    <textarea name="Message" class="form-control" id="inputNote" rows="5" ></textarea>
                 </div>
               </div>
 			   
@@ -112,16 +110,12 @@
                 <button type="submit" class="templatemo-blue-button">POST</button>
                 <button type="reset" class="templatemo-white-button">Clear</button>
               </div>  
-          <centre><label class="control-label" for="inputNote"><centre><h2>OR</h2></centre> <br/> <br/>To Upload an Image Click the Link below:</label><br/>
-			   <br/>
-			   <a href="upload.html" class="templatemo-blue-button">Post an Image</a></centre>	
-		 </form>
+          <centre>
+			   <br/>  
+		        </form>
+
 		  </div>
-		 
-          <footer class="text-right">
-           <p>Copyright &copy; 2023 Placement portal | Developed by
-              <a href="http://RajPatil.net" target="_parent">Raj Patil</a>
-          </footer>
+
         </div>
       </div>
     </div>

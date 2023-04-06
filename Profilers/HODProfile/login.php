@@ -92,22 +92,13 @@
               <h2 class="templatemo-inline-block">Welcome to the Portal</h2><hr>
               <p>Being The Head of the Department, Its the Duty of you to take your students and Faculties to the right way. Approve the details of students in Manage Students tab. You may Revoke the Details and Approve them if it is Wrong and Entered Correctly Respectively.</p> 
               <p><a href="manage-student.php">Approve the Students</a></p>
-              <p><a href="manage-student.php">View Student Details</a></p>
               <p><a href="Change Password.php">Change your account Password</a></p>            
             </div>
             <div class="templatemo-content-widget white-bg col-1 text-center">
               <i class="fa fa-times"></i>
-              <h4 class="text-uppercase">Manage Projects</h4>
-              <h6 class="text-uppercase margin-bottom-10">Design Project</h6>
+              <a href="manage-users1.php"><h4 class="text-uppercase">View students</h4></a>
               <img src="images/bicycle.jpg" alt="Bicycle" class="img-circle img-thumbnail">
             </div>
-            <div class="templatemo-content-widget white-bg col-1">
-              <i class="fa fa-times"></i>
-              <h2 class="text-uppercase">Progress</h2>
-              <h3 class="text-uppercase">Infined</h3><hr>
-              <div class="progress">
-                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
-              </div>
               <div class="progress">
                 <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"></div>
               </div>
@@ -152,48 +143,30 @@
                 <i class="fa fa-times"></i>
                 <div class="panel-heading templatemo-position-relative"><h2 class="text-uppercase">Faculty List</h2></div>
                 <div class="table-responsive">
-                  <table class="table table-striped table-bordered">
-                    <thead>
-                      <tr>
-                        <td>No.</td>
-                        <td>First Name</td>
-                        <td>Last Name</td>
-                        <td>Designation</td>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1.</td>
-                        <td>John</td>
-                        <td>Smith</td>
-                        <td>@jS</td>
-                      </tr>
-                      <tr>
-                        <td>2.</td>
-                        <td>Bill</td>
-                        <td>Jones</td>
-                        <td>@bJ</td>
-                      </tr>
-                      <tr>
-                        <td>3.</td>
-                        <td>Mary</td>
-                        <td>James</td>
-                        <td>@mJ</td>
-                      </tr>
-                      <tr>
-                        <td>4.</td>
-                        <td>Steve</td>
-                        <td>Bride</td>
-                        <td>@sB</td>
-                      </tr>
-                      <tr>
-                        <td>5.</td>
-                        <td>Paul</td>
-                        <td>Richard</td>
-                        <td>@pR</td>
-                      </tr>                    
-                    </tbody>
-                  </table>    
+                <?php 
+                  mysql_connect('localhost','root','');
+                  mysql_select_db('placement');
+                  $r1 = mysql_query("SELECT branch from hlogin where Username='" . $_SESSION["husername"] . "'");
+                  $row1 = mysql_fetch_assoc($r1);
+
+                  $RESULT=mysql_query("SELECT * from faculty where Dept ='" . $row1["branch"] . "'");
+                    
+                  print "<table>";
+                  print '<tr><th style="padding: 0 15px;">Name</th><th style="padding: 0 15px;">Designation</th><th style="padding: 0 15px;">Email</th> </tr>';
+                  while($row = mysql_fetch_assoc($RESULT))
+                  {
+                    print '<tr>';
+                      print '<td style="padding: 0 15px;">'.$row['username'].'</td>';	
+                      
+                      print '<td style="padding: 0 15px;">'.$row['Designation'].'</td>';		
+                      print '<td style="padding: 0 15px;">'.$row['Email'].'</td>';	
+                     print '</tr>';
+                 
+                  }
+                  print "</table>";
+              
+                
+                ?>   
                 </div>                          
               </div>
             </div>           
